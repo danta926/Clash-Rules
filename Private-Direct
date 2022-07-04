@@ -2,4 +2,4 @@ payload:
   # 私人定制直连
   
   # 加速github
-  - DOAMIN-SUFFIX,cdn.jsdelivr.net
+  - DOMAIN-SUFFIX,cdn.jsdelivr.net
