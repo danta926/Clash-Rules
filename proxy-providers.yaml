@@ -1,0 +1,161 @@
+port: 7890
+socks-port: 7891
+allow-lan: false
+mode: Rule
+log-level: info
+external-controller: :9090
+
+proxy-providers:
+  ✈️ 我的机场:
+    type: http
+    url: "机场链接"
+    interval: 86400
+    path: ./airpot/clash.yaml
+    health-check:
+      enable: true
+      interval: 600
+      url: http://www.gstatic.com/generate_204
+
+proxy-groups:
+  - name: 🚀 节点选择
+    type: select
+    proxies:
+      - ♻️ 自动选择
+    use:
+      - ✈️ 我的机场
+
+  - name: ♻️ 自动选择
+    type: url-test
+    url: http://www.gstatic.com/generate_204
+    interval: 300
+    tolerance: 50
+    use:
+      - ✈️ 我的机场
+
+  - name: 🌍 国外网站
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - ♻️ 自动选择
+      - 🎯 全球直连  
+    use:
+      - ✈️ 我的机场
+
+  - name: 🍎 苹果服务
+    type: select
+    proxies:
+      - 🎯 全球直连
+      - 🚀 节点选择
+    use:
+      - ✈️ 我的机场
+
+  - name: 🎯 全球直连
+    type: select
+    proxies:
+      - DIRECT
+      - 🚀 节点选择
+      - ♻️ 自动选择
+
+  - name: 🛑 全球拦截
+    type: select
+    proxies:
+      - REJECT
+      - DIRECT
+
+  - name: 🐟 漏网之鱼
+    type: select
+    proxies:
+      - 🚀 节点选择
+      - 🎯 全球直连
+      - ♻️ 自动选择
+    use:
+      - ✈️ 我的机场
+      
+rule-providers:
+  LocalAreaNetwork:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/danta926/Clash-Rules/main/LocalAreaNetwork.txt"
+    path: ./ruleset/Clash/LocalAreaNetwork.yaml
+    interval: 86400
+
+  ChinaDomain:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/danta926/Clash-Rules/main/ChinaDomain.txt"
+    path: ./ruleset/Clash/ChinaDomain.yaml
+    interval: 86400
+
+  China-IP:
+    type: http
+    behavior: ipcidr
+    url: "https://raw.githubusercontent.com/danta926/Clash-Rules/main/China-IP.txt"
+    path: ./ruleset/Clash/China-IP.yaml
+    interval: 86400
+
+  ChinaCompany-IP:
+    type: http
+    behavior: ipcidr
+    url: "https://raw.githubusercontent.com/danta926/Clash-Rules/main/ChinaCompany-IP.txt"
+    path: ./ruleset/Clash/ChinaCompany-IP.yaml
+    interval: 86400
+
+  Apple:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/danta926/Clash-Rules/main/Apple.txt"
+    path: ./ruleset/Clash/Apple.yaml
+    interval: 86400
+
+  Proxy-List:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/danta926/Clash-Rules/main/Proxy-List.txt"
+    path: ./ruleset/Clash/Proxy-List.yaml
+    interval: 86400
+
+  BanEasyListChina:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/danta926/Clash-Rules/main/BanEasyListChina.txt"
+    path: ./ruleset/Clash/BanEasyListChina.yaml
+    interval: 86400
+
+  BanAD:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/danta926/Clash-Rules/main/BanAD.txt"
+    path: ./ruleset/Clash/BanAD.yaml
+    interval: 86400
+
+  Private-Direct:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/danta926/Clash-Rules/main/Private-Direct"
+    path: ./ruleset/Clash/Private-Direct.yaml
+    interval: 86400
+
+  Private-Proxy:
+    type: http
+    behavior: classical
+    url: "https://raw.githubusercontent.com/danta926/Clash-Rules/main/Private-Proxy"
+    path: ./ruleset/Clash/Private-Proxy.yaml
+    interval: 86400
+  
+
+rules:
+  - DOMAIN,clash.razord.top,🎯 全球直连
+  - DOMAIN,yacd.haishan.me,🎯 全球直连
+  - RULE-SET,Private-Direct,🎯 全球直连
+  - RULE-SET,Private-Proxy,🚀 节点选择
+  - RULE-SET,LocalAreaNetwork,🎯 全球直连
+  - RULE-SET,BanEasyListChina,🛑 全球拦截
+  - RULE-SET,BanAD,🛑 全球拦截
+  - RULE-SET,ChinaDomain,🎯 全球直连
+  - RULE-SET,China-IP,🎯 全球直连
+  - RULE-SET,ChinaCompany-IP,🎯 全球直连
+  - RULE-SET,Apple,🍎 苹果服务
+  - RULE-SET,Proxy-List,🚀 节点选择
+  - GEOIP,LAN,🎯 全球直连
+  - GEOIP,CN,🎯 全球直连
+  - MATCH,🐟 漏网之鱼
