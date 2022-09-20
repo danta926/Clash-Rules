@@ -3,3 +3,4 @@ payload:
   
   # 谷歌商店
   - DOMAIN-SUFFIX,googleapis.cn
+  - DOMAIN-SUFFIX,connectivitycheck.gstatic.com
