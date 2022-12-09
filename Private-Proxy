@@ -5,3 +5,4 @@ payload:
   - DOMAIN-SUFFIX,googleapis.cn
   - DOMAIN-SUFFIX,connectivitycheck.gstatic.com
   - DOMAIN-SUFFIX,xn--ngstr-lra8j.com
+  - PROCESS-NAME,com.android.providers.downloads
