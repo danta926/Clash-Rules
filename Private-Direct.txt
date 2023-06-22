@@ -4,3 +4,4 @@ payload:
   # 加速github
   - DOMAIN-SUFFIX,cdn.jsdelivr.net
   - DOMAIN-SUFFIX,apphot.cc
+  - DOMAIN-SUFFIX,aliexpress.com
