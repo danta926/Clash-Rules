@@ -1,5 +1,6 @@
 payload:
   # 私人定制代理
+  - DOMAIN-SUFFIX,chat.openai.com
   
   # 谷歌商店
   - DOMAIN-SUFFIX,googleapis.cn
