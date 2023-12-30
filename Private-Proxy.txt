@@ -1,29 +1,6 @@
 payload:
-  # 私人定制代理
-  - DOMAIN-SUFFIX,chat.openai.com
-  
   # 谷歌商店
   - DOMAIN-SUFFIX,googleapis.cn
   - DOMAIN-SUFFIX,googleapis.com
   - DOMAIN-SUFFIX,connectivitycheck.gstatic.com
   - DOMAIN-SUFFIX,xn--ngstr-lra8j.com
-
-  # ChatGPT
-  - DOMAIN-SUFFIX,openai.com
-  - DOMAIN-SUFFIX,sentry.io
-  - DOMAIN-SUFFIX,pay.openai.com
-  - DOMAIN-SUFFIX,identrust.com
-  - DOMAIN,openaiapi-site.azureedge.net
-  - DOMAIN-SUFFIX,chat.openai.com
-  - DOMAIN-SUFFIX,challenges.cloudflare.com
-  - DOMAIN-SUFFIX,auth0.openai.com
-  - DOMAIN-SUFFIX,platform.openai.com
-  # Add ai.com
-  - DOMAIN-SUFFIX,ai.com
-  # Add stripe.com
-  - DOMAIN-SUFFIX,invoice.stripe.com
-  - DOMAIN-SUFFIX,stripe.com
-  #add poe.com
-  - DOMAIN-SUFFIX,poe.com
-  #add bard.google.com
-  - DOMAIN-SUFFIX,bard.google.com
