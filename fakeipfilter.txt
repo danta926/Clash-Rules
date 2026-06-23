@@ -3,7 +3,6 @@ playload:
     - "+.dianxiaomi.com"
     - "+.mabangerp.com"
     - "+.aliexpress.com"
-    - "rule-set:ChinaCN_Domain,Domain_private"
     # 本地网络连接检测&NTP
     - "+.msftconnecttest.com"
     - "+.msftncsi.com"
